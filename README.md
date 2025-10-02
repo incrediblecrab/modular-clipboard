@@ -15,6 +15,10 @@ A VS Code extension that allows you to create, manage, and quickly copy reusable
 - **Rich Editing**: Edit box contents in VS Code editor with full syntax support
 - **Global Storage**: Boxes are available across all VS Code workspaces
 
+## Installation
+
+Install from the VS Code Marketplace or build from source.
+
 ## Usage
 
 ### Creating a Box
