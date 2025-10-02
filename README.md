@@ -1,5 +1,9 @@
 # Modular Clipboard
 
+![Version](https://img.shields.io/visual-studio-marketplace/v/maxs-lab-of-things.modular-clipboard)
+![Downloads](https://img.shields.io/visual-studio-marketplace/d/maxs-lab-of-things.modular-clipboard)
+![Rating](https://img.shields.io/visual-studio-marketplace/r/maxs-lab-of-things.modular-clipboard)
+
 A VS Code extension that allows you to create, manage, and quickly copy reusable text/code snippets through a convenient sidebar interface.
 
 ## Features
@@ -7,9 +11,7 @@ A VS Code extension that allows you to create, manage, and quickly copy reusable
 - **Click-to-Copy**: Click any box title to instantly copy its contents to clipboard
 - **Unlimited Boxes**: Create as many clipboard boxes as needed
 - **Auto-Save**: Changes are automatically saved globally across all projects
-- **Manual Save**: Option to manually trigger save via button
 - **Rich Editing**: Edit box contents in VS Code editor with full syntax support
-- **Bulk Edit**: Export/edit all boxes as JSON for advanced management
 - **Global Storage**: Boxes are available across all VS Code workspaces
 
 ## Usage
@@ -21,10 +23,9 @@ A VS Code extension that allows you to create, manage, and quickly copy reusable
 
 ### Copying Content
 - **Click** on any box title to copy its content to clipboard
-- Or right-click → "Copy Box Content"
 
 ### Editing Content
-1. Right-click a box → "Edit Box Content"
+1. Click the edit icon or right-click a box → "Edit Box Content"
 2. Opens in VS Code editor
 3. Make changes and **Save** (Cmd/Ctrl+S)
 4. Content is auto-saved to the box
@@ -32,14 +33,6 @@ A VS Code extension that allows you to create, manage, and quickly copy reusable
 ### Managing Boxes
 - **Rename**: Right-click → "Rename Box"
 - **Delete**: Right-click → "Delete Box"
-- **Refresh**: Click refresh icon to reload boxes
-- **Save Now**: Click save icon for manual save
-
-### Bulk Editing (JSON)
-1. Click the **JSON** icon in toolbar
-2. Edit the JSON structure directly
-3. Save to apply changes
-4. Close without saving to discard
 
 ## Development
 
@@ -81,6 +74,15 @@ interface ClipboardBox {
   updatedAt: number;
 }
 ```
+
+## Resources
+
+- 🔒 [Privacy Policy](https://mlot.ai/privacy)
+
+## Publisher
+
+**Max's Lab of Things**
+Visit us at [mlot.ai](https://mlot.ai/)
 
 ## License
 

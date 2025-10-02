@@ -2,7 +2,15 @@
   "name": "modular-clipboard",
   "displayName": "Modular Clipboard",
   "description": "Click-to-copy clipboard boxes for managing reusable code snippets and text",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "publisher": "maxs-lab-of-things",
+  "homepage": "https://mlot.ai",
+  "author": {
+    "name": "Max Marquardt",
+    "url": "https://mlot.ai"
+  },
+  "license": "MIT",
+  "icon": "icon-modular.png",
   "engines": {
     "vscode": "^1.80.0"
   },
