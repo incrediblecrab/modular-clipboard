@@ -1,10 +1,11 @@
 # Modular Clipboard
 
 ![Version](https://img.shields.io/visual-studio-marketplace/v/maxs-lab-of-things.modular-clipboard)
-![Downloads](https://img.shields.io/visual-studio-marketplace/d/maxs-lab-of-things.modular-clipboard)
-![Rating](https://img.shields.io/visual-studio-marketplace/r/maxs-lab-of-things.modular-clipboard)
+![MLoT](https://img.shields.io/badge/MLoT-ai-blue)
 
 A VS Code extension that allows you to create, manage, and quickly copy reusable text/code snippets through a convenient sidebar interface.
+
+![Demo](https://raw.githubusercontent.com/incrediblecrab/Packages-and-Extensions-Media/main/modular-clipboard.gif)
 
 ## Features
 
@@ -55,6 +56,8 @@ interface ClipboardBox {
 
 ## Resources
 
+- 📺 [Watch Demo Video](https://youtu.be/scZh06HVZ9s)
+- 🌐 [Visit MLoT Page](https://mlot.ai/modular-clipboard/)
 - 🔒 [Privacy Policy](https://mlot.ai/privacy)
 
 ## Publisher
