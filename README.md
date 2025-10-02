@@ -34,28 +34,6 @@ A VS Code extension that allows you to create, manage, and quickly copy reusable
 - **Rename**: Right-click → "Rename Box"
 - **Delete**: Right-click → "Delete Box"
 
-## Development
-
-### Setup
-```bash
-npm install
-```
-
-### Compile
-```bash
-npm run compile
-```
-
-### Watch Mode
-```bash
-npm run watch
-```
-
-### Running the Extension
-1. Press **F5** in VS Code to open Extension Development Host
-2. The extension will be loaded and active
-3. Open the Modular Clipboard view from the Activity Bar
-
 ## Architecture
 
 - **Storage**: Global state via VS Code API (persists across workspaces)
