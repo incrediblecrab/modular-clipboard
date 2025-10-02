@@ -1,0 +1,103 @@
+{
+  "name": "modular-clipboard",
+  "displayName": "Modular Clipboard",
+  "description": "Click-to-copy clipboard boxes for managing reusable code snippets and text",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:modularClipboard.boxesView"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "modular-clipboard",
+          "title": "Modular Clipboard",
+          "icon": "$(files)"
+        }
+      ]
+    },
+    "views": {
+      "modular-clipboard": [
+        {
+          "id": "modularClipboard.boxesView",
+          "name": ""
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "modularClipboard.addBox",
+        "title": "Add New Box",
+        "icon": "$(add)"
+      },
+      {
+        "command": "modularClipboard.copyBox",
+        "title": "Copy Box Content",
+        "icon": "$(copy)"
+      },
+      {
+        "command": "modularClipboard.editBox",
+        "title": "Edit Box Content",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "modularClipboard.renameBox",
+        "title": "Rename Box",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "modularClipboard.deleteBox",
+        "title": "Delete Box",
+        "icon": "$(trash)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "modularClipboard.addBox",
+          "when": "view == modularClipboard.boxesView",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "modularClipboard.editBox",
+          "when": "view == modularClipboard.boxesView && viewItem == clipboardBox",
+          "group": "inline"
+        },
+        {
+          "command": "modularClipboard.renameBox",
+          "when": "view == modularClipboard.boxesView && viewItem == clipboardBox",
+          "group": "1_edit@1"
+        },
+        {
+          "command": "modularClipboard.deleteBox",
+          "when": "view == modularClipboard.boxesView && viewItem == clipboardBox",
+          "group": "2_delete@1"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@typescript-eslint/parser": "^6.4.1",
+    "eslint": "^8.47.0",
+    "typescript": "^5.1.6"
+  }
+}
