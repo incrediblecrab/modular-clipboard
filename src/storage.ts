@@ -1,11 +1,13 @@
 import * as vscode from 'vscode';
+import * as fs from 'fs';
+import * as path from 'path';
 import { ClipboardBox, ClipboardData } from './types';
 
-const STORAGE_KEY = 'modularClipboard.boxes';
 const STORAGE_VERSION = '1.0.0';
+const STORAGE_FILENAME = 'modular-clipboard.json';
 
 /**
- * Service for managing clipboard box storage using VS Code global state
+ * Service for managing clipboard box storage using workspace .vscode folder
  */
 export class StorageService {
   private context: vscode.ExtensionContext;
@@ -16,11 +18,43 @@ export class StorageService {
   }
 
   /**
+   * Get the path to the storage file in the .vscode folder
+   */
+  private getStorageFilePath(): string | null {
+    const workspaceFolders = vscode.workspace.workspaceFolders;
+    if (!workspaceFolders || workspaceFolders.length === 0) {
+      return null;
+    }
+
+    const workspaceRoot = workspaceFolders[0].uri.fsPath;
+    const vscodeDir = path.join(workspaceRoot, '.vscode');
+
+    // Create .vscode directory if it doesn't exist
+    if (!fs.existsSync(vscodeDir)) {
+      fs.mkdirSync(vscodeDir, { recursive: true });
+    }
+
+    return path.join(vscodeDir, STORAGE_FILENAME);
+  }
+
+  /**
    * Get all clipboard boxes from storage
    */
   async getBoxes(): Promise<ClipboardBox[]> {
     try {
-      const data = this.context.globalState.get<ClipboardData>(STORAGE_KEY);
+      const filePath = this.getStorageFilePath();
+
+      if (!filePath) {
+        vscode.window.showWarningMessage('No workspace folder open. Please open a folder to use Modular Clipboard.');
+        return [];
+      }
+
+      if (!fs.existsSync(filePath)) {
+        return [];
+      }
+
+      const fileContent = fs.readFileSync(filePath, 'utf8');
+      const data = JSON.parse(fileContent) as ClipboardData;
 
       if (!data || !data.boxes) {
         return [];
@@ -46,12 +80,19 @@ export class StorageService {
    */
   async saveBoxes(boxes: ClipboardBox[]): Promise<boolean> {
     try {
+      const filePath = this.getStorageFilePath();
+
+      if (!filePath) {
+        vscode.window.showWarningMessage('No workspace folder open. Cannot save clipboard boxes.');
+        return false;
+      }
+
       const data: ClipboardData = {
         boxes,
         version: STORAGE_VERSION
       };
 
-      await this.context.globalState.update(STORAGE_KEY, data);
+      fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf8');
       return true;
     } catch (error) {
       console.error('Error saving boxes:', error);

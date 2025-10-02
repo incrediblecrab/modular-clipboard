@@ -151,9 +151,9 @@ export function activate(context: vscode.ExtensionContext) {
 
   // Show welcome message on first activation
   const hasShownWelcome = context.globalState.get('modularClipboard.hasShownWelcome');
-  if (!hasShownWelcome) {
+  if (!hasShownWelcome && vscode.workspace.workspaceFolders) {
     vscode.window.showInformationMessage(
-      'Welcome to Modular Clipboard! Click the + icon to create your first box.',
+      'Welcome to Modular Clipboard! Your boxes will be stored in .vscode/modular-clipboard.json. Click the + icon to create your first box.',
       'Got it'
     );
     context.globalState.update('modularClipboard.hasShownWelcome', true);

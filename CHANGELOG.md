@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.5.1] - 2025-10-02
+### Changed
+- Storage moved from global state to workspace-level `.vscode/modular-clipboard.json` for easier manual editing and per-project clipboard boxes
+- Delete icon now appears inline next to edit icon for better discoverability
+
 ## [1.5.0] - 2025-09-22
 ### Added
 - Standardizing and adding media

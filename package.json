@@ -2,7 +2,7 @@
   "name": "modular-clipboard",
   "displayName": "Modular Clipboard",
   "description": "Click-to-copy clipboard boxes for managing reusable code snippets and text",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "publisher": "maxs-lab-of-things",
   "homepage": "https://mlot.ai",
   "author": {
@@ -76,7 +76,12 @@
         {
           "command": "modularClipboard.editBox",
           "when": "view == modularClipboard.boxesView && viewItem == clipboardBox",
-          "group": "inline"
+          "group": "inline@1"
+        },
+        {
+          "command": "modularClipboard.deleteBox",
+          "when": "view == modularClipboard.boxesView && viewItem == clipboardBox",
+          "group": "inline@2"
         },
         {
           "command": "modularClipboard.renameBox",
