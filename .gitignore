@@ -25,3 +25,14 @@ Thumbs.db
 # Environment
 .env
 .env.local
+
+# --- OS / editor junk & local env (added 2026-08-04) ---
+.DS_Store?
+._*
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+desktop.ini
+.env.*.local
