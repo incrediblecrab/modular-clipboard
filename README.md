@@ -67,7 +67,7 @@ interface ClipboardBox {
 ## Publisher
 
 **Max's Lab of Things**
-Visit us at [mlot.ai](https://mlot.ai/)
+Visit [mlot.ai](https://mlot.ai/)
 
 ## License
 

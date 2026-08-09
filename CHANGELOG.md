@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.5.2] - 2026-08-09
+### Changed
+- Standardized README structure (Resources / Publisher / License)
+- Removed documentation links pointing to non-public repositories
+
 ## [1.5.1] - 2025-10-02
 ### Changed
 - Storage moved from global state to workspace-level `.vscode/modular-clipboard.json` for easier manual editing and per-project clipboard boxes
