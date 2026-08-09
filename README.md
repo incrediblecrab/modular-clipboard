@@ -5,7 +5,7 @@
 
 A VS Code extension that allows you to create, manage, and quickly copy reusable text/code snippets through a convenient sidebar interface.
 
-![Demo](https://raw.githubusercontent.com/incrediblecrab/Packages-and-Extensions-Media/main/gifs/modular-clipboard.gif)
+![Demo](https://raw.githubusercontent.com/incrediblecrab/mlot-developer-media/main/gifs/modular-clipboard.gif)
 
 ## Features
 
