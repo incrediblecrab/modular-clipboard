@@ -1,74 +1,65 @@
-# Modular Clipboard
+# modular-clipboard
 
-![Version](https://img.shields.io/visual-studio-marketplace/v/maxs-lab-of-things.modular-clipboard)
-![MLoT](https://img.shields.io/badge/MLoT-ai-blue)
+![Version](https://img.shields.io/visual-studio-marketplace/v/maxs-lab-of-things.modular-clipboard) ![MLoT](https://img.shields.io/badge/MLoT-ai-blue)
 
-A VS Code extension that allows you to create, manage, and quickly copy reusable text/code snippets through a convenient sidebar interface.
+Modular Clipboard is a VS Code extension for keeping named reusable text boxes in a workspace sidebar and copying their contents to the clipboard. It is published on the VS Code Marketplace as [`maxs-lab-of-things.modular-clipboard`](https://marketplace.visualstudio.com/items?itemName=maxs-lab-of-things.modular-clipboard); the Marketplace version is 1.5.2, matching this repository.
 
 ![Demo](https://raw.githubusercontent.com/incrediblecrab/mlot-developer-media/main/gifs/modular-clipboard.gif)
 
-## Features
+**Objective:** keep repeated snippets, prompts, commands or notes close to the editor and copyable from a VS Code Activity Bar view.
 
-- **Click-to-Copy**: Click any box title to instantly copy its contents to clipboard
-- **Unlimited Boxes**: Create as many clipboard boxes as needed
-- **Auto-Save**: Changes are automatically saved globally across all projects
-- **Rich Editing**: Edit box contents in VS Code editor with full syntax support
-- **Global Storage**: Boxes are available across all VS Code workspaces
+**Inputs:** VS Code 1.80.0 or newer and an open workspace folder. Boxes are stored in `.vscode/modular-clipboard.json` under the first workspace folder.
 
-## Installation
+**Files:**
 
-Install from the VS Code Marketplace or build from source.
+- [`src/extension.ts`](src/extension.ts): activation, Activity Bar tree view and command handlers
+- [`src/storage.ts`](src/storage.ts): workspace JSON storage for boxes
+- [`src/treeView.ts`](src/treeView.ts): tree item and tree data provider classes
+- [`src/types.ts`](src/types.ts): clipboard box data types
+- [`package.json`](package.json): extension manifest, Marketplace metadata, Activity Bar view contribution, commands, menus and scripts
+- [`CHANGELOG.md`](CHANGELOG.md): release notes
+- [`tsconfig.json`](tsconfig.json): TypeScript compiler settings
+
+**Try it:** install with `ext install maxs-lab-of-things.modular-clipboard`, open a workspace and click the Modular Clipboard Activity Bar view.
 
 ## Usage
 
-### Creating a Box
-1. Click the **+** icon in the Modular Clipboard sidebar
-2. Enter a title for your box
-3. Box is created and auto-saved
+Open the Modular Clipboard Activity Bar view and click the plus icon to create a box. Give the box a title, then use the box actions to edit, rename, delete or copy it.
 
-### Copying Content
-- **Click** on any box title to copy its content to clipboard
+Clicking a box or running **Copy Box Content** writes the box content to the VS Code clipboard. Editing opens the current content in an editor tab; saving that tab updates the stored box content.
 
-### Editing Content
-1. Click the edit icon or right-click a box → "Edit Box Content"
-2. Opens in VS Code editor
-3. Make changes and **Save** (Cmd/Ctrl+S)
-4. Content is auto-saved to the box
+## Commands, menus and view
 
-### Managing Boxes
-- **Rename**: Right-click → "Rename Box"
-- **Delete**: Right-click → "Delete Box"
+| Contribution | Identifier | What it does |
+| --- | --- | --- |
+| Activity Bar container | `modular-clipboard` | adds the Modular Clipboard view container |
+| Tree view | `modularClipboard.boxesView` | lists clipboard boxes |
+| Command | `modularClipboard.addBox` | creates a new box after prompting for a title |
+| Command | `modularClipboard.copyBox` | copies a box's content to the clipboard |
+| Command | `modularClipboard.editBox` | opens a box's content for editing |
+| Command | `modularClipboard.renameBox` | renames a box |
+| Command | `modularClipboard.deleteBox` | deletes a box after confirmation |
 
-## Architecture
+The view title contributes **Add New Box**. Item context menus contribute edit, rename and delete actions; the copy command is attached to each tree item.
 
-- **Storage**: Global state via VS Code API (persists across workspaces)
-- **UI**: Native TreeView in Activity Bar sidebar
-- **Auto-Save**: Enabled by default on all operations
-- **Stability**: Error handling and validation on all operations
+## Storage
 
-## Data Structure
+Boxes are stored as JSON in `.vscode/modular-clipboard.json` in the first workspace folder. Each box has an `id`, `title`, `content`, `createdAt` timestamp and `updatedAt` timestamp.
 
-```typescript
-interface ClipboardBox {
-  id: string;
-  title: string;
-  content: string;
-  createdAt: number;
-  updatedAt: number;
-}
-```
+The extension uses VS Code global state only to remember whether it has already shown its welcome message.
 
-## Resources
+## Development
 
-- 📺 [Watch Demo Video](https://youtu.be/scZh06HVZ9s)
-- 🌐 [Visit MLoT Page](https://mlot.ai/modular-clipboard/)
-- 🔒 [Privacy Policy](https://mlot.ai/privacy)
+The repository includes the scripts `npm run compile`, `npm run watch`, `npm run lint` and `npm run vscode:prepublish`. The extension entry point is configured as `./out/extension.js`.
 
-## Publisher
+## Links
 
-**Max's Lab of Things**
-Visit [mlot.ai](https://mlot.ai/)
+- [Marketplace listing](https://marketplace.visualstudio.com/items?itemName=maxs-lab-of-things.modular-clipboard)
+- [Demo video](https://youtu.be/scZh06HVZ9s)
+- [MLoT product page](https://mlot.ai/modular-clipboard/)
+- [Privacy policy](https://mlot.ai/privacy)
+- Publisher: [Max's Lab of Things](https://mlot.ai/)
 
 ## License
 
-MIT
+MIT. See [`LICENSE`](LICENSE).
